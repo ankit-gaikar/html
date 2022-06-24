@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="icon" href="image/favicon.png" sizes="32x32" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous"></script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N5Z3G48');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            margin: 0;
+        }
+        
+        h1 {
+            font-family: 'Barlow', sans-serif;
+        }
+        
+        p {
+            margin-bottom: 30px;
+            margin-top: 0;
+        }
+        
+        .hsc-grid {
+            display: flex;
+            flex-direction: row;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            background-image: url('image/istockphoto-1193825948.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .hsc-inner {
+            flex: 1;
+        }
+        
+        .full-size {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .box-border {
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 30px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px;
+            color: #fff;
+            max-width: 800px;
+        }
+        
+        .logo {
+            margin-bottom: 40px;
+        }
+        
+        .w-100 {
+            width: 100%;
+        }
+        
+        .sub-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .title {
+            text-transform: uppercase;
+            font-size: 34px;
+            text-align: center;
+        }
+        
+        ul.list-style {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .list-style>li {
+            border: 1px solid #fff;
+            padding: 20px;
+            margin-left: 20px;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .list-style>li:first-child {
+            margin-left: 0;
+        }
+        
+        .d-flex {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        
+        .d-flex>.inner {
+            flex-basis: 50%;
+            padding: 20px;
+            text-align: center;
+        }
+        /*.d-flex>.inner:first-child {
+            border-right: 1px solid #fff;
+        }*/
+        
+        .button {
+            padding: 20px 30px;
+            background-color: #dae1e3;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 18px;
+            color: #000;
+            text-decoration: none;
+            margin-bottom: 30px;
+            display: inline-block;
+            font-weight: 700;
+        }
+        
+        .button:hover {
+            color: #dae1e3;
+            background-color: #000;
+        }
+        
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        p>a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .popup-body {
+            display: none;
+            background: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            z-index: 99;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            overflow: auto;
+        }
+        
+        .popup-body>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            max-width: 100%;
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .popup-inner {
+            display: none;
+            background: #fff;
+            padding: 40px;
+            max-width: 80%;
+            position: relative;
+            z-index: 999;
+            border: 2px solid #777;
+        }
+        
+        .popup-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 9;
+            cursor: pointer;
+            font-weight: 700;
+            padding: 5px;
+            line-height: 1;
+            font-size: 18px;
+        }
+        
+        .popup-open {
+            overflow: hidden;
+        }
+        
+        .form-control {
+            margin-bottom: 20px;
+        }
+        
+        .form-control label {
+            width: 100%;
+        }
+        
+        .form-control input,
+        .form-control textarea,
+        .form-control select {
+            padding: 10px;
+            width: 93%;
+        }
+        
+        .form-control select {
+            width: 100%;
+        }
+        
+        input.button {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        
+        .inner>.d-flex>i {
+            font-size: 40px;
+            margin-right: 10px;
+        }
+        
+        @media only screen and (max-width: 1400px) {
+            .full-size {
+                object-position: 70%;
+            }
+        }
+        
+        @media screen and (max-width: 1300px) {
+            .hsc-inner {
+                flex-basis: 50% !important;
+            }
+            .hsc-inner.content {
+                flex-basis: 50% !important;
+            }
+        }
+        
+        @media screen and (max-width: 992px) {
+            .popup-inner {
+                padding: 20px;
+                max-width: 80%;
+            }
+            .hsc-inner {
+                flex-basis: 30%;
+            }
+            .hsc-inner.content {
+                flex-basis: 70%;
+            }
+        }
+        
+        @media only screen and (max-width: 768px) {
+            .hsc-grid {
+                flex-direction: column-reverse;
+            }
+            .hsc-grid>.hsc-inner {
+                width: 100%;
+                flex-basis: 100%;
+            }
+            ul.list-style {
+                flex-direction: column;
+            }
+            ul.list-style>li {
+                margin-bottom: 20px;
+                margin-left: 0;
+            }
+            .d-flex:not(.checklist) {
+                flex-direction: column;
+            }
+            .d-flex>.inner {
+                flex-basis: 100%;
+            }
+            .d-flex>.inner:first-child {
+                border-right: 0;
+            }
+            .box-border {
+                margin: 0;
+            }
+            .box-border {
+                background-color: #444444;
+            }
+        }
+        
+        @media only screen and (max-width: 520px) {
+            .title {
+                padding: 20px;
+            }
+            p {
+                padding: 0px 30px;
+            }
+            .list-style>li:first-child {
+                margin-left: 30px;
+            }
+            ul.list-style>li {
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+        }
+        
+        @media only screen and (max-width: 380px) {
+            .title {
+                padding: 0px 60px;
+                font-size: 20px;
+            }
+            p {
+                padding: 0px 60px;
+                font-size: 15px;
+            }
+            .list-style>li:first-child {
+                margin-left: 60px;
+            }
+            ul.list-style>li {
+                margin-left: 60px;
+                margin-right: 60px;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5Z3G48"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="hsc-grid">
+
+        <div class="hsc-inner" style="flex-basis:30%">
+
+            <img src="image/image004-3.jpg" alt="Main Image" class="full-size">
+
+        </div>
+
+        <div class="hsc-inner content" style="flex-basis:70%">
+
+            <div class="box-border">
+
+                <figure class="logo">
+
+                    <img src="image/Sophie-logo.png" alt="Logo">
+
+                </figure>
+
+                <p style="font-weight: 500; font-size: 20px; text-align:center;">Sophie Goudreau, Real Estate Agent Cornwall <br> <br><a href="tel:6133634233" class="button">613.363.4233</a></p>
+
+                <figure class="sub-heading">
+
+                    <img src="image/Sec_Shield Realty Ltd._Gold-1.png" alt="gold">
+
+                </figure>
+
+                <h1 class="title">Let me help you list or find your dream home in Cornwall</h1>
+
+                <p style="text-align: center;">As a CENTURY 21 &#174; REALTOR &#169;, I am committed to providing you the highest quality service possible by combining my award winning real estate experience with the global power of CENTURY 21 brand - #1 Real Estate Brand in the World!</p>
+
+                <ul class="list-style">
+
+                    <li>Top 4% Nationally</li>
+
+                    <li>16 Years of Experience</li>
+
+                    <li>Centurion Award Winner</li>
+
+                </ul>
+
+                <div class="text-center popup-trigger">
+                    <a href="#selling" class="button">Work With Me</a>
+                </div>
+
+                <div class="d-flex">
+
+                    <div class="inner">
+                        <div class="d-flex checklist">
+                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                            <p>Get your Free custom list of available properties directly to your inbox.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="inner">
+                        <div class="d-flex checklist">
+                            <i class="fa fa-check-square" aria-hidden="true"></i>
+                            <p>Request a Free Home Evaluation & Free Staging Consultation.</p>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="popup-body harman">
+        <div>
+            <div class="popup-inner" id="buying">
+                <form action="buying-thank-you.php" method="POST">
+                    <div class="form-control">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" value="" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="" required>
+                    </div>
+                    <input type="hidden" name="choice" value="buying">
+                    <input type="submit" class="button" value="submit" name="submit">
+                </form>
+            </div>
+            <div class="popup-inner" id="selling">
+                <form action="selling-thank-you.php" method="POST">
+                    <div class="form-control">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" value="" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" required>
+                            <option value="Find a home">Find a home</option>
+                            <option value="List my home">List my home</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="address">Address</label>
+                        <textarea name="address" id="address" required></textarea>
+                    </div>
+                    <input type="hidden" name="choice" value="selling">
+                    <input type="submit" class="button" value="submit" name="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="//cdn.callrail.com/companies/351221576/ad6fc0e352032f39388a/12/swap.js">
+    </script>
+    <script>
+        /** popup functionality */
+        $(document).ready(function($) {
+            $('.popup-body .popup-inner').append('<div class="popup-close">x</div>');
+            $('.popup-trigger a').click(function(e) {
+                e.preventDefault();
+            });
+            $('.popup-trigger').click(function() {
+                var link = $(this).find('a').attr('href');
+                $('body').addClass('popup-open');
+                $('.popup-body').hide();
+                $('.popup-inner').hide();
+                if (link != undefined) {
+                    $('.popup-body').show();
+                    $('.popup-body').find(link).fadeIn();
+                } else {
+                    $(this).next('.popup-body').toggle();
+                }
+            });
+            $('.popup-close, .popup-body').click(function(e) {
+                if (!$(e.target).hasClass('popup-inner')) {
+                    $.cookie('popup-closed', 'yes', {
+                        expires: 7
+                    });
+                    $('body').removeClass('popup-open');
+                    $('.popup-body').hide();
+                    $('.popup-inner').hide();
+                }
+            });
+            $(".popup-inner").click(function(event) {
+                event.stopPropagation();
+            });
+        });
+    </script>
+</body>
+
+
+
+</html>
